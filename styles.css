@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700&display=swap');
+
+:root {
+    --main-bg: #0d0d0d;
+    --card-bg: #1a1a1a;
+    --red: #8A0303; 
+    --red-light: #B30000; 
+    --text: #e5e5e5;
+    --text-light: #aaaaaa;
+}
+
+body {
+    font-family: 'Vazirmatn', sans-serif;
+    margin: 0;
+    background: var(--main-bg);
+    color: var(--text);
+    line-height: 1.8;
+}
+
+/* هدر */
+.header {
+    text-align: center;
+    background: #111;
+    padding: 40px 20px;
+    border-bottom: 3px solid var(--red);
+}
+
+.header h1 {
+    margin: 0;
+    color: var(--red-light);
+    font-size: 32px;
+}
+
+.header a {
+    color: var(--text);
+    text-decoration: none;
+    transition: color .3s;
+}
+
+.header a:hover {
+    color: var(--red-light);
+}
+
+/* بخش‌ها */
+.section {
+    background: var(--card-bg);
+    margin: 20px;
+    padding: 20px;
+    border-left: 4px solid var(--red);
+    border-radius: 8px;
+    transition: transform .3s, box-shadow .3s;
+}
+
+.section:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(138, 3, 3, 0.4);
+}
+
+.section h2 {
+    color: var(--red-light);
+    margin-top: 0;
+}
+
+/* لیست‌ها */
+ul {
+    padding-right: 20px;
+}
+
+li {
+    color: var(--text-light);
+}
+
+/* فوتر */
+.footer {
+    text-align: center;
+    padding: 20px;
+    background: #111;
+    color: var(--text-light);
+    border-top: 2px solid var(--red);
+}
+
+/* ریسپانسیو */
+@media (max-width: 600px) {
+    .section {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    .header h1 {
+        font-size: 26px;
+    }
+}
