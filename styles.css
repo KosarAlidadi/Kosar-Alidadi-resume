@@ -87,7 +87,7 @@ li {
   margin-bottom: 6px;
 }
 
-/* ---------------- Form ---------------- */
+/* ---------- Form Elements ---------- */
 .form {
   display: flex;
   flex-direction: column;
@@ -95,12 +95,19 @@ li {
 }
 
 input,
-textarea {
+textarea,
+select {
   padding: 14px;
   border-radius: 12px;
   border: 1px solid var(--glass-border);
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(0,0,0,.35);
   color: var(--text);
+  font-size: 14px;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
 }
 
 input::placeholder,
@@ -108,11 +115,10 @@ textarea::placeholder {
   color: var(--muted);
 }
 
-input:focus,
-textarea:focus {
-  outline: none;
-  border-color: var(--red-light);
-  box-shadow: 0 0 0 2px rgba(255, 42, 42, 0.25);
+select {
+  appearance: none;
+  cursor: pointer;
+
 }
 
 button {
@@ -120,15 +126,10 @@ button {
   border-radius: 14px;
   border: none;
   background: linear-gradient(135deg, var(--red), var(--red-light));
-  color: #fff;
+  color: white;
   font-weight: bold;
   cursor: pointer;
-  transition: transform .15s ease, box-shadow .15s ease;
-}
-
-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(179, 0, 0, 0.45);
+  margin-top: 10px;
 }
 
 /* ---------------- Table (Admin) ---------------- */
@@ -178,4 +179,12 @@ tr:hover td {
   .header h1 {
     font-size: 26px;
   }
+}
+
+.logout {
+  display: inline-block;
+  margin-top: 15px;
+  color: var(--red-light);
+  text-decoration: none;
+  font-size: 14px;
 }
