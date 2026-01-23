@@ -10,27 +10,19 @@
 
 <header class="header glass">
   <h1>کوثر علی‌دادی</h1>
+
   <p>
     <a href="mailto:kam8tad@gmail.com">kam8tad@gmail.com</a> |
     <a href="https://github.com/KosarAlidadi" target="_blank">GitHub</a>
   </p>
+
   <p>
-  👥 کاربران آنلاین:
-  <span id="online">0</span>
-</p>
-
-<script>
-const ws = new WebSocket(
-  "wss://kosar-alidadi-resume-fastapi.liara.run/ws/online"
-);
-
-ws.onmessage = (event) => {
-  document.getElementById("online").innerText = event.data;
-};
-</script>
-
+    👥 کاربران آنلاین:
+    <span id="online">—</span>
+  </p>
 </header>
 
+<!-- ================= SUMMARY ================= -->
 <section class="card glass">
   <h2>خلاصه</h2>
   <p>
@@ -39,12 +31,14 @@ ws.onmessage = (event) => {
   </p>
 </section>
 
+<!-- ================= EDUCATION ================= -->
 <section class="card glass">
   <h2>تحصیلات</h2>
   <p><strong>کارشناسی مهندسی کامپیوتر</strong></p>
   <p>دانشگاه شهید چمران اهواز | ۱۴۰۱ - اکنون</p>
 </section>
 
+<!-- ================= SKILLS ================= -->
 <section class="card glass">
   <h2>مهارت‌ها</h2>
   <ul>
@@ -55,6 +49,7 @@ ws.onmessage = (event) => {
   </ul>
 </section>
 
+<!-- ================= PROJECTS ================= -->
 <section class="card glass">
   <h2>پروژه‌ها</h2>
   <ul>
@@ -64,13 +59,13 @@ ws.onmessage = (event) => {
   </ul>
 </section>
 
+<!-- ================= REQUEST FORM ================= -->
 <section class="card glass">
   <h2>درخواست انجام پروژه</h2>
 
   <form class="form"
-      action="https://kosar-alidadi-resume-fastapi.liara.run/request" 
-      method="post">
-
+        action="https://kosar-alidadi-resume-fastapi.liara.run/request"
+        method="post">
 
     <input type="text" name="name" placeholder="نام شما" required>
     <input type="email" name="email" placeholder="ایمیل" required>
@@ -82,7 +77,10 @@ ws.onmessage = (event) => {
               placeholder="توضیح کامل پروژه"
               required></textarea>
 
-    <input type="number" name="budget" placeholder="حقوق پیشنهادی (تومان)" required>
+    <input type="number"
+           name="budget"
+           placeholder="حقوق پیشنهادی (تومان)"
+           required>
 
     <input type="number"
            name="prepayment"
@@ -113,6 +111,37 @@ ws.onmessage = (event) => {
 <footer class="footer">
   © 2026 - Kosar Alidadi
 </footer>
+
+<!-- ================= WEBSOCKET ================= -->
+<script>
+(function () {
+  const onlineEl = document.getElementById("online");
+
+  try {
+    const ws = new WebSocket(
+      "wss://kosar-alidadi-resume-fastapi.liara.run/ws/online"
+    );
+
+    ws.onopen = () => {
+      onlineEl.innerText = "1";
+    };
+
+    ws.onmessage = (event) => {
+      onlineEl.innerText = event.data;
+    };
+
+    ws.onerror = () => {
+      onlineEl.innerText = "—";
+    };
+
+    ws.onclose = () => {
+      onlineEl.innerText = "—";
+    };
+  } catch (e) {
+    onlineEl.innerText = "—";
+  }
+})();
+</script>
 
 </body>
 </html>
